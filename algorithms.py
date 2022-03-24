@@ -112,8 +112,10 @@ def geographicGraph(n, r=0.5, dirigido=False, auto=False):
             if i != j:
                 d = np.linalg.norm(
                     g.nodes[i].attr["N_POS"] - g.nodes[j].attr["N_POS"])
+                # print(d)
                 if d <= r:
                     g.addEdge(i, j, f"{i}->{j}")
+                    # print(d)
 
     print("Geographic Graph Created")
     return g
@@ -135,23 +137,22 @@ def barasiAlbertGraph(n, d, dirigido=False, auto=False):
     g = Graph()
     g.typee = 4
 
-    for i in range(d):
-        g.addNode(i)
-
-    for i in range(d):
-        for j in range(d):
-            if i != j:
-                g.addEdge(i, j, f"{i}->{j}")
-
-    for i in range(d, n):
-        v = np.random.randint(0, i-1, (1, i))
+    for i in range(n):
+        v = np.random.randint(0, i, (1, i))
         # print(v)
         g.addNode(i)
         for k in v[0]:
-            dg = g.nodes[k].attr['DEGREE']
+            # dg = g.nodes[k].attr['DEGREE']
+            dg = len(g.nodes[k].attr["NEIGHBORS"])
+            # print("grado de nodo:", dg)
             p = 1 - dg / d
-            if random.random() <= p:
+            # print(p)
+            prob = random.random()
+            # print(prob)
+            if prob <= p:
+                # print("Si creó arista")
                 g.addEdge(i, k, f"{i}->{k}")
+            # print("################")
 
     print("Barasi-Albert Graph Created")
     return g

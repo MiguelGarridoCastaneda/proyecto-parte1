@@ -12,11 +12,12 @@ if __name__ == "__main__":
     # g = gilbertGraph(500, p=0.6)
     # saveGraph(g)
     ##################################
-    # g = geographicGraph(500, r=0.7)
-    # saveGraph(g)
-    ##################################
-    # g = barasiAlbertGraph(500, 80)
-    # saveGraph(g)
-    ##################################
-    g = dorogovtsevMendesGraph(500)
+    g = geographicGraph(30, r=0.5)
     saveGraph(g)
+    ##################################
+    # g = barasiAlbertGraph(30, 4)
+    # saveGraph(g)
+    # print(g.getEdges())
+    ##################################
+    # g = dorogovtsevMendesGraph(500)
+    # saveGraph(g)

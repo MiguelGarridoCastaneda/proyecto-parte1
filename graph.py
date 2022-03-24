@@ -21,6 +21,9 @@ class Graph:
             n = Node(name)
 
             self.nodes[name] = n
+            # print("se crea nodo", name)
+        # else:
+        #     print("el nodo ", name, "ya existia")
 
         return n
 
